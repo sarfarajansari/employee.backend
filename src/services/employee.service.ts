@@ -2,7 +2,7 @@ import { Repository } from "typeorm";
 import { AppDataSource } from "../connector/dataSource";
 import { Employee } from "../models/employee";
 
-class EmployeeService {
+export class EmployeeService {
   private employeeRepository: Repository<Employee>;
 
   constructor() {
