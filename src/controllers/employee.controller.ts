@@ -1,5 +1,5 @@
 import { Employee } from "../models/employee";
-import { employeeService } from "../services/exployee.service";
+import { employeeService } from "../services/employee.service";
 import { Request, Response } from "express";
 
 const isEmployee = (data: any): data is Employee => {
