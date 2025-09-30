@@ -15,10 +15,10 @@ export class Employee {
   name!: string;
 
   @Column({ length: 150, unique: true })
-  email!: string;
+  email_address!: string;
 
   @Column({ type: "text" })
-  department!: string;
+  position!: string;
 
   @CreateDateColumn()
   created_at!: Date;

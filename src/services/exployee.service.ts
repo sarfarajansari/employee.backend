@@ -2,7 +2,7 @@ import { Repository } from "typeorm";
 import { AppDataSource } from "../connector/dataSource";
 import { Employee } from "../models/employee";
 
-export class EmployeeService {
+class EmployeeService {
   private employeeRepository: Repository<Employee>;
 
   constructor() {
@@ -44,3 +44,5 @@ export class EmployeeService {
     return;
   }
 }
+
+export const employeeService = new EmployeeService();
