@@ -10,7 +10,11 @@ export class EmployeeService {
   }
 
   async getAllEmployees(): Promise<Employee[]> {
-    return this.employeeRepository.find();
+    return this.employeeRepository.find({
+      order: {
+        updated_at: 'DESC'
+      }
+    });
   }
 
   async getEmployeeById(id: number): Promise<Employee> {
