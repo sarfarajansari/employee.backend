@@ -12,7 +12,9 @@ import { Employee } from "../models/employee";
 // Mock the employee service
 jest.mock("../services/employee.service");
 
-const mockEmployeeService = employeeService as jest.Mocked<typeof employeeService>;
+const mockEmployeeService = employeeService as jest.Mocked<
+  typeof employeeService
+>;
 
 describe("Employee Controller", () => {
   let mockRequest: Partial<Request>;
@@ -44,6 +46,8 @@ describe("Employee Controller", () => {
       name: "John Doe",
       email_address: "john.doe@example.com",
       position: "Software Engineer",
+      department: "Engineering",
+      status: "Active",
       created_at: new Date(),
       updated_at: new Date(),
     };
@@ -57,7 +61,9 @@ describe("Employee Controller", () => {
 
       await createEmployee(mockRequest as Request, mockResponse as Response);
 
-      expect(mockEmployeeService.createEmployee).toHaveBeenCalledWith(validEmployeeData);
+      expect(mockEmployeeService.createEmployee).toHaveBeenCalledWith(
+        validEmployeeData
+      );
       expect(mockResponse.status).toHaveBeenCalledWith(201);
       expect(mockResponse.json).toHaveBeenCalledWith(mockEmployee);
     });
@@ -203,6 +209,8 @@ describe("Employee Controller", () => {
         name: "John Doe",
         email_address: "john.doe@example.com",
         position: "Software Engineer",
+        department: "Engineering",
+        status: "Active",
         created_at: new Date(),
         updated_at: new Date(),
       },
@@ -211,6 +219,8 @@ describe("Employee Controller", () => {
         name: "Jane Smith",
         email_address: "jane.smith@example.com",
         position: "Product Manager",
+        department: "Engineering",
+        status: "Active",
         created_at: new Date(),
         updated_at: new Date(),
       },
@@ -245,6 +255,8 @@ describe("Employee Controller", () => {
       name: "John Doe",
       email_address: "john.doe@example.com",
       position: "Software Engineer",
+      department: "Engineering",
+      status: "Active",
       created_at: new Date(),
       updated_at: new Date(),
     };
@@ -324,6 +336,8 @@ describe("Employee Controller", () => {
       name: "John Doe Updated",
       email_address: "john.updated@example.com",
       position: "Senior Software Engineer",
+      department: "Engineering",
+      status: "Active",
       created_at: new Date(),
       updated_at: new Date(),
     };
@@ -338,7 +352,10 @@ describe("Employee Controller", () => {
 
       await updateEmployee(mockRequest as Request, mockResponse as Response);
 
-      expect(mockEmployeeService.updateEmployee).toHaveBeenCalledWith(1, validEmployeeData);
+      expect(mockEmployeeService.updateEmployee).toHaveBeenCalledWith(
+        1,
+        validEmployeeData
+      );
       expect(mockResponse.status).toHaveBeenCalledWith(200);
       expect(mockResponse.json).toHaveBeenCalledWith(mockUpdatedEmployee);
     });
@@ -373,7 +390,10 @@ describe("Employee Controller", () => {
 
       await updateEmployee(mockRequest as Request, mockResponse as Response);
 
-      expect(mockEmployeeService.updateEmployee).toHaveBeenCalledWith(999, validEmployeeData);
+      expect(mockEmployeeService.updateEmployee).toHaveBeenCalledWith(
+        999,
+        validEmployeeData
+      );
       expect(mockResponse.status).toHaveBeenCalledWith(404);
       expect(mockResponse.json).toHaveBeenCalledWith({
         error: "Employee not found",
@@ -448,7 +468,10 @@ describe("Employee Controller", () => {
 
       await updateEmployee(mockRequest as Request, mockResponse as Response);
 
-      expect(mockEmployeeService.updateEmployee).toHaveBeenCalledWith(NaN, validEmployeeData);
+      expect(mockEmployeeService.updateEmployee).toHaveBeenCalledWith(
+        NaN,
+        validEmployeeData
+      );
       expect(mockResponse.status).toHaveBeenCalledWith(404);
       expect(mockResponse.json).toHaveBeenCalledWith({
         error: "Employee not found",
