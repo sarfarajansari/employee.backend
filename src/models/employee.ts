@@ -20,6 +20,12 @@ export class Employee {
   @Column({ type: "text" })
   position!: string;
 
+  @Column({ type: "text" })
+  department!: string;
+
+  @Column({ type: "text" })
+  status!: string;
+
   @CreateDateColumn()
   created_at!: Date;
 
